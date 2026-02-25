@@ -1,5 +1,97 @@
 lucide.createIcons();
 
+// ── Embedded Data ─────────────────────────────────────────
+const siteData = {
+    "episodes": [
+        {
+            "id": 1,
+            "title": "معاوية بن أبي سفيان",
+            "desc": "كيف بُنيت القوة البحرية في التاريخ الإسلامي؟ قراءة في التخطيط والقيادة.",
+            "videoFile": "/Graphic/ep1.mp4",
+            "cover": "images/1.jpg",
+            "youtubeLink": ""
+        },
+        {
+            "id": 2,
+            "title": "عيسى عليه السلام",
+            "desc": "رمزية المنارة البيضاء في الشام ودلالاتها الروحية والتاريخية.",
+            "videoFile": "/Graphic/ep2.mp4",
+            "cover": "images/2.jpg",
+            "youtubeLink": ""
+        },
+        {
+            "id": 3,
+            "title": "بلال بن رباح",
+            "desc": "قصة الأذان الأول وبداية الإعلان العلني للإسلام.",
+            "videoFile": "/Graphic/ep3.mp4",
+            "cover": "images/3.jpg",
+            "youtubeLink": ""
+        },
+        {
+            "id": 4,
+            "title": "الجامع الأموي",
+            "desc": "كيف تشكّلت المذاهب الفقهية الأربعة؟ ولماذا كان اختلافها رحمة.",
+            "videoFile": "/Graphic/ep4.mp4",
+            "cover": "images/4.jpg",
+            "youtubeLink": ""
+        },
+        {
+            "id": 5,
+            "title": "صلاح الدين الأيوبي",
+            "desc": "سيرة القائد الذي أعاد القدس ووحّد الصفوف، دروس في القيادة.",
+            "videoFile": "/Graphic/ep5.mp4",
+            "cover": "images/5.jpg",
+            "youtubeLink": ""
+        },
+        {
+            "id": 6,
+            "title": "ابن تيمية",
+            "desc": "حياة وفكر شيخ الإسلام، ومواقفه في الإصلاح العقدي والفكري.",
+            "videoFile": "/Graphic/ep6.mp4",
+            "cover": "images/6.jpg",
+            "youtubeLink": ""
+        }
+    ],
+    "quotes": [
+        {
+            "label": "مقتبس الحلقة الأولى",
+            "title": "التخطيط قبل <br> الإبحار",
+            "desc": "إن بناء السفن لا يبدأ في ورش النجارة، بل يبدأ في عقول القادة الذين يدركون أن البحر هو الميدان القادم.",
+            "img": "images/q1.webp"
+        },
+        {
+            "label": "مقتبس الحلقة الثانية",
+            "title": "منارة <br> التغيير",
+            "desc": "لم تكن المنارة يوماً مجرد حجرٍ يعلوه الضياء، بل كانت دائماً رمزاً لبصيرة الأمم التي لا تضل الطريق.",
+            "img": "images/q2.webp"
+        },
+        {
+            "label": "مقتبس الحلقة الثالثة",
+            "title": "صوت <br> الحق الأول",
+            "desc": "الأذان ليس مجرد نداء للصلاة، بل هو إعلان عن سيادة القيم السماوية فوق كل الضجيج الأرضي.",
+            "img": "images/q3.webp"
+        },
+        {
+            "label": "مقتبس الحلقة الرابعة",
+            "title": "اتفاق في <br> أصول الفهم",
+            "desc": "سعة الفقه هي سعة الأمة، واختلاف الأئمة كان تنوعاً في طرق الوصول، لا تنازعاً في وجهات النظر.",
+            "img": "images/q4.webp"
+        },
+        {
+            "label": "مقتبس الحلقة الخامسة",
+            "title": "وحدة <br> المصير",
+            "desc": "استعادة القدس لم تكن معجزة عسكرية، بل كانت ثمرة طبيعية لوحدة القلوب التي سبقت وحدة الصفوف.",
+            "img": "images/q5.webp"
+        },
+        {
+            "label": "مقتبس الحلقة السادسة",
+            "title": "الإصلاح <br> يبدأ بالوعي",
+            "desc": "لا يمكن للأمم أن تنهض وهي تحمل أفكاراً مشوهة عن ذاتها، الإصلاح الحقيقي يبدأ من تنقية التصورات.",
+            "img": "images/q6.webp"
+        }
+    ]
+};
+
 // ── Mobile Menu ──────────────────────────────────────────
 function toggleMenu() {
     const menu = document.getElementById('mobileMenu');
@@ -34,31 +126,27 @@ let quotesData = [];
 let currentQuoteIndex = 0;
 let isTransitioning = false;
 
-// Note: To use fetch('data.json') properly, you need to open this project
-// via a local server (like the "Live Server" extension in VS Code)
-fetch('data.json')
-    .then(response => response.json())
-    .then(data => {
-        renderEpisodes(data.episodes);
-        quotesData = data.quotes;
-        initSlider();
-    })
-    .catch(error => console.error("Error loading JSON data:", error));
-
+// ── Initialization ────────────────────────────────────────
+// Replaced fetch logic with direct data assignment
+document.addEventListener('DOMContentLoaded', () => {
+    renderEpisodes(siteData.episodes);
+    quotesData = siteData.quotes;
+    initSlider();
+});
 
 // ── Render Episodes with YouTube Logic ────────────────────
 function renderEpisodes(episodes) {
     const grid = document.getElementById('episodesGrid');
-    
+
     episodes.forEach(ep => {
         // Check if youtube link is present to determine if the episode is "published"
         const isPublished = ep.youtubeLink && ep.youtubeLink.trim() !== "";
-        
+
         // 1. Overlay HTML: Click to play local video in the modal
-        const overlayHTML = isPublished 
-            ? `<div onclick="openVideo('${ep.videoFile}')" class="flex flex-col items-center justify-center w-full h-full text-white cursor-pointer hover:scale-105 transition-transform"><i data-lucide="play-circle" size="48" class="mb-2"></i><span class="text-xl font-bold amiri">تشغيل المقطع</span></div>`
+        const overlayHTML = isPublished
+            ? `<div onclick="openYoutube('${ep.youtubeLink}')" class="flex flex-col items-center justify-center w-full h-full text-white cursor-pointer hover:scale-105 transition-transform"><i data-lucide="play-circle" size="48" class="mb-2"></i><span class="text-xl font-bold amiri">تشغيل المقطع</span></div>`
             : `<div class="text-center cursor-not-allowed w-full h-full flex items-center justify-center"><div class="text-white text-2xl font-bold amiri">قريباً</div></div>`;
-        
+
         // 2. Button HTML: Link to YouTube
         const buttonHTML = isPublished
             ? `<a href="${ep.youtubeLink}" target="_blank" class="text-sm font-bold text-[#c5a059] flex items-center gap-2 hover:gap-3 transition-all">مشاهدة على يوتيوب <i data-lucide="youtube" size="14"></i></a>`
@@ -99,8 +187,8 @@ function renderEpisodes(episodes) {
 
 // ── Slider Logic ──────────────────────────────────────────
 function initSlider() {
-    if(!quotesData || quotesData.length === 0) return;
-    
+    if (!quotesData || quotesData.length === 0) return;
+
     const dotsContainer = document.getElementById('quoteDots');
     quotesData.forEach((_, idx) => {
         const dot = document.createElement('div');
@@ -113,7 +201,7 @@ function initSlider() {
 }
 
 function updateQuote(index) {
-    if(!quotesData || quotesData.length === 0) return;
+    if (!quotesData || quotesData.length === 0) return;
 
     const img = document.getElementById('quoteImg');
     const textContainer = document.getElementById('quoteTextContainer');
@@ -166,26 +254,60 @@ function initCounters() {
 }
 
 // ── Video Modal ───────────────────────────────────────────
-function openVideo(filePath, autoPlay = true) {
+function openVideo(filePath) {
     const modal = document.getElementById('videoModal');
-    const player = document.getElementById('modalVideoPlayer');
-    document.getElementById('modalVideoSrc').src = filePath;
-    player.load();
+    const video = document.getElementById('modalVideoPlayer');
+    const source = document.getElementById('modalVideoSrc');
+    const iframe = document.getElementById('modalYoutubePlayer');
+
+    // Reset everything
+    iframe.src = "";
+    iframe.classList.add('hidden');
+
+    source.src = filePath;
+    video.classList.remove('hidden');
+
+    video.load();
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
-    if (autoPlay) player.play().catch(e => console.log("Auto-play prevented"));
+
+    // Play AFTER load
+    video.play().catch(err => {
+        console.log('Play blocked:', err);
+    });
 }
 
 function closeVideo() {
     const modal = document.getElementById('videoModal');
-    const player = document.getElementById('modalVideoPlayer');
+    const iframe = document.getElementById('modalYoutubePlayer');
+    const video = document.getElementById('modalVideoPlayer');
+
+    iframe.src = "";
+    video.pause();
+
     modal.style.display = 'none';
     document.body.style.overflow = 'auto';
-    try { player.pause(); player.currentTime = 0; player.src = ""; player.load(); } catch (e) { }
 }
-
 window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeVideo(); });
 
+
+function openYoutube(url) {
+    const modal = document.getElementById('videoModal');
+    const iframe = document.getElementById('modalYoutubePlayer');
+    const video = document.getElementById('modalVideoPlayer');
+
+    // Hide MP4 player
+    video.pause();
+    video.classList.add('hidden');
+
+    // Convert YouTube link to embed
+    const videoId = url.split('v=')[1]?.split('&')[0];
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+
+    iframe.classList.remove('hidden');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
 // ── Teaser Mute Toggle ────────────────────────────────────
 function toggleTeaserMute() {
     const video = document.getElementById('teaserVideo');
@@ -228,7 +350,7 @@ if (teaserVideo) {
         });
     }, { threshold: 0.3 });
     teaserObserver.observe(teaserVideo);
-    
+
     // Responsive Video Loading
     function loadResponsiveVideo() {
         const videoSource = document.getElementById('teaserVideoSource');
