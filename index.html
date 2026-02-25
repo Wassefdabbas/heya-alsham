@@ -374,15 +374,20 @@
                     class="absolute top-4 right-4 bg-white/10 hover:bg-white/20 p-2 rounded-full text-white z-50 transition">
                     <i data-lucide="x"></i>
                 </button>
+
                 <video id="modalVideoPlayer" class="w-full h-full" controls playsinline>
                     <source id="modalVideoSrc" src="" type="video/mp4">
                     متصفحك لا يدعم تشغيل الفيديو.
                 </video>
+
+                <iframe id="modalYoutubePlayer" class="w-full h-full hidden" src="" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
             </div>
         </div>
         <div class="absolute inset-0 -z-10" onclick="closeVideo()"></div>
     </div>
-
     <script src="script.js"></script>
 </body>
 
