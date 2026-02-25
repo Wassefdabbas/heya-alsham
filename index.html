@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>برنامج هي الشام | الهوية والتاريخ</title>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RNZVK77N59"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -14,7 +13,7 @@
 
         gtag('config', 'G-RNZVK77N59');
     </script>
-    
+
     <link rel="icon" type="image/png" href="images/logo-tab.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,365 +22,19 @@
         href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Kufi+Arabic:wght@300;500;700&display=swap"
         rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        @font-face {
-            font-family: 'Doran';
-            src: url('/font/Doran-Regular.ttf') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-        }
 
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
-
-        * {
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-green: #2d4a3e;
-            --accent-gold: #c5a059;
-            --paper-bg: #f4eee0;
-            --text-dark: #1a1a1a;
-        }
-
-        html {
-            width: 100%;
-            overflow-x: hidden;
-        }
-
-        body {
-            width: 100%;
-            background-color: var(--paper-bg);
-            color: var(--text-dark);
-            font-family: "cairo", sans-serif;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1,
-        h2,
-        h3,
-        .amiri {
-            font-family: 'Doran';
-        }
-
-        .texture-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png');
-            opacity: 0.2;
-            pointer-events: none;
-            z-index: 50;
-        }
-
-        .hero-section {
-            background-size: cover;
-            background-position: center;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            max-width: 100vw;
-            overflow: hidden;
-            box-sizing: border-box;
-        }
-
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.17, 0.55, 0.55, 1);
-        }
-
-        .scroll-reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mobile Menu */
-        #mobileMenu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.17, 0.55, 0.55, 1), opacity 0.3s ease;
-            opacity: 0;
-        }
-
-        #mobileMenu.open {
-            max-height: 500px;
-            opacity: 1;
-        }
-
-        .hamburger-line {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background: var(--primary-green);
-            border-radius: 2px;
-            transition: all 0.35s cubic-bezier(0.17, 0.55, 0.55, 1);
-            transform-origin: center;
-        }
-
-        #menuToggle.open .hamburger-line:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-
-        #menuToggle.open .hamburger-line:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-
-        #menuToggle.open .hamburger-line:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
-
-        /* Episode Cards */
-        .episode-card {
-            background: #fff;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
-            transition: all 0.4s ease;
-            border: 1px solid rgba(197, 160, 89, 0.15);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .episode-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent-gold);
-            box-shadow: 0 20px 50px rgba(45, 74, 62, 0.1);
-        }
-
-        .video-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(45, 74, 62, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .episode-card:hover .video-overlay {
-            opacity: 1;
-        }
-
-        /* Quote Slider Styles */
-        .quote-slider-container {
-            position: relative;
-            width: 100%;
-            max-width: 320px;
-            margin: 0 auto;
-            color: #bbbbbbb9;
-        }
-
-        .quote-frame {
-            aspect-ratio: 9/16;
-            border-radius: 2rem;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            border: 8px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            background: #000;
-        }
-
-        #quoteImg {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
-        }
-
-        .quote-text-animate {
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .quote-nav-btn {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .quote-nav-btn:hover {
-            background-color: var(--accent-gold);
-            border-color: var(--accent-gold);
-            transform: scale(1.1);
-        }
-
-        #videoModal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 100;
-            background: rgba(0, 0, 0, 0.95);
-            padding: 20px;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .gold-underline {
-            height: 3px;
-            width: 60px;
-            background: var(--accent-gold);
-            margin: 12px auto;
-        }
-
-        .nav-link {
-            position: relative;
-            display: inline-block;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-gold);
-            transition: width 0.4s cubic-bezier(0.17, 0.55, 0.55, 1);
-        }
-
-        .nav-link:hover {
-            color: var(--accent-gold);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Mobile nav link */
-        .mobile-nav-link {
-            display: block;
-            padding: 14px 24px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #2d4a3e;
-            letter-spacing: 0.05em;
-            border-bottom: 1px solid rgba(197, 160, 89, 0.12);
-            transition: all 0.25s ease;
-            position: relative;
-        }
-
-        .mobile-nav-link:last-child {
-            border-bottom: none;
-        }
-
-        .mobile-nav-link:hover {
-            color: var(--accent-gold);
-            background: rgba(197, 160, 89, 0.05);
-            padding-right: 32px;
-        }
-
-        .mobile-nav-link::before {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: var(--accent-gold);
-            border-radius: 0 2px 2px 0;
-            opacity: 0;
-            transition: opacity 0.25s ease;
-        }
-
-        .mobile-nav-link:hover::before {
-            opacity: 1;
-        }
-
-        /* Cinematic Teaser Styles */
-        .cinematic-teaser {
-            position: relative;
-            width: 100%;
-            height: 85vh;
-            overflow: hidden;
-            background: #000;
-            max-width: 100vw;
-            box-sizing: border-box;
-        }
-
-        .cinematic-teaser video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: translate(-50%, -50%);
-            opacity: 0.6;
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--paper-bg);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary-green);
-        }
-
-        /* Responsive padding for small screens */
-        @media (max-width: 640px) {
-            nav {
-                padding-left: 0;
-                padding-right: 0;
-            }
-
-            nav .max-w-7xl {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-
-            .max-w-7xl {
-                padding-left: 1rem !important;
-                padding-right: 1rem !important;
-            }
-
-            body,
-            html {
-                max-width: 100vw;
-            }
-        }
-
-        /* Extra small devices */
-        @media (max-width: 375px) {
-            nav .max-w-7xl {
-                padding-left: 0.75rem;
-                padding-right: 0.75rem;
-            }
-
-            .max-w-7xl {
-                padding-left: 0.75rem !important;
-                padding-right: 0.75rem !important;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="texture-overlay"></div>
 
-    <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-xl border-b border-[#c5a059]/10">
-        <!-- Main Nav Bar -->
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <!-- Logo -->
             <a href="#hero" class="cursor-pointer hover:opacity-80 transition flex-shrink-0">
                 <img src="images/logo.png" alt="هي الشام" class="h-14">
             </a>
 
-            <!-- Desktop Links -->
             <div class="hidden md:flex items-center gap-10 font-medium text-[#2d4a3e]/80">
                 <a href="#about"
                     class="nav-link hover:text-[#c5a059] transition-colors text-sm uppercase tracking-wider">عن
@@ -394,9 +47,7 @@
                     class="nav-link hover:text-[#c5a059] transition-colors text-sm uppercase tracking-wider">الثمار</a>
             </div>
 
-            <!-- Right Side: Social + Hamburger -->
             <div class="flex items-center gap-1 md:gap-4">
-                <!-- Social Icons (always visible) -->
                 <a href="https://youtube.com/@HAYAALSHAM-w1x" target="_blank"
                     class="group flex items-center justify-center w-9 h-9 text-[#2d4a3e]/60 hover:text-[#c5a059] transition-all duration-300">
                     <i data-lucide="youtube" size="18" class="group-hover:scale-110 transition-transform"></i>
@@ -414,7 +65,6 @@
                     <i data-lucide="twitter" size="18" class="group-hover:scale-110 transition-transform"></i>
                 </a>
 
-                <!-- Hamburger — Mobile Only -->
                 <button id="menuToggle" onclick="toggleMenu()" aria-label="فتح القائمة"
                     class="md:hidden flex flex-col justify-center items-center gap-[6px] w-10 h-10 rounded-xl hover:bg-[#c5a059]/10 transition-all duration-300 mr-1">
                     <span class="hamburger-line"></span>
@@ -424,7 +74,6 @@
             </div>
         </div>
 
-        <!-- Mobile Dropdown Menu -->
         <div id="mobileMenu"
             class="md:hidden bg-white/95 backdrop-blur-xl border-t border-[#c5a059]/10 overflow-hidden">
             <div class="py-2">
@@ -433,7 +82,6 @@
                 <a href="#quotes" onclick="closeMenu()" class="mobile-nav-link">اقتباسات</a>
                 <a href="#gains" onclick="closeMenu()" class="mobile-nav-link">الثمار</a>
             </div>
-            <!-- Mobile Social Icons Row -->
             <div class="flex justify-center gap-4 px-6 py-4 border-t border-[#c5a059]/10">
                 <a href="https://youtube.com/@m_mohisni" target="_blank"
                     class="w-10 h-10 rounded-full bg-[#2d4a3e]/5 flex items-center justify-center text-[#2d4a3e]/60 hover:text-[#c5a059] hover:bg-[#c5a059]/10 transition-all duration-300">
@@ -455,8 +103,8 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero-section relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero"
+        class="hero-section relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-12">
         <div class="absolute inset-0 z-0">
             <video autoplay muted loop playsinline class="w-full h-full object-cover scale-105">
                 <source src="hero-v.mp4" type="video/mp4">
@@ -466,41 +114,44 @@
             <div class="absolute inset-0 bg-black/20"></div>
         </div>
 
-        <div class="relative z-10 max-w-5xl px-6 text-center scroll-reveal">
+        <div class="hero-title relative z-10 max-w-5xl px-6 text-center scroll-reveal w-full mt-4 md:mt-0">
             <span
-                class="inline-block px-4 py-1 border border-[#c5a059] text-[#c5a059] rounded-full text-xs font-bold mb-6 tracking-widest animate-pulse">
+                class="inline-block px-3 py-1.5 text-xs sm:text-sm border border-[#c5a059] text-[#c5a059] rounded-full font-bold mb-4 md:mb-6 tracking-widest animate-pulse">
                 سلسلة وثائقية فكرية
             </span>
-            <h1 class="text-6xl md:text-9xl text-white font-bold amiri mb-8 leading-tight drop-shadow-2xl">
+
+            <h1
+                class="text-7xl sm:text-8xl md:text-9xl text-white font-bold amiri mb-3 md:mb-6 leading-none drop-shadow-2xl">
                 هي <span class="text-[#c5a059]">الشام</span>
             </h1>
             <br>
-            <p class="text-2xl md:text-3xl text-white/90 mb-8 amiri">
+            <p class="text-xl sm:text-2xl md:text-3xl text-white/90 mb-4 md:mb-8 amiri">
                 "التاريخ ليس عبئاً نحمله.. بل بناءٌ نكمله"
             </p>
-            <div class="w-20 h-1 bg-[#c5a059] mx-auto mb-10 shadow-glow"></div>
-            <p class="text-lg md:text-xl text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+
+            <div class="w-16 md:w-20 h-1 bg-[#c5a059] mx-auto mb-6 md:mb-10 shadow-glow"></div>
+
+            <p class="text-base md:text-xl text-white/80 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed font-light">
                 رحلة معرفية لربط الجيل بأمجاده، واستعادة الوعي بالهوية الإسلامية عبر ١٢ محطة تاريخية ملهمة.
             </p>
 
-            <div class="flex flex-wrap gap-6 justify-center">
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
                 <a href="#episodes"
-                    class="group bg-[#c5a059] text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-[#b08d4a] transition-all duration-300 shadow-xl shadow-gold/20 flex items-center gap-3">
+                    class="group bg-[#c5a059] text-white px-8 md:px-10 py-3 md:py-4 rounded-full font-bold text-base md:text-lg hover:bg-[#b08d4a] transition-all duration-300 shadow-xl shadow-gold/20 flex items-center justify-center gap-3 w-full sm:w-auto">
                     <i data-lucide="play-circle" class="group-hover:rotate-12 transition-transform"></i> ابدأ المشاهدة
                 </a>
                 <a href="#about"
-                    class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-[#2d4a3e] transition-all duration-300 flex items-center gap-3">
+                    class="bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 md:px-10 py-3 md:py-4 rounded-full font-bold text-base md:text-lg hover:bg-white hover:text-[#2d4a3e] transition-all duration-300 flex items-center justify-center gap-3 w-full sm:w-auto">
                     <i data-lucide="info"></i> اكتشف القصة
                 </a>
             </div>
         </div>
 
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-[#2d4a3e]/50">
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce text-white/60 z-10">
             <i data-lucide="chevron-down" size="32"></i>
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="py-28 px-6 max-w-7xl mx-auto border-b border-[#c5a059]/10">
         <div class="grid md:grid-cols-2 gap-20 items-center">
             <div class="scroll-reveal">
@@ -508,14 +159,13 @@
                 <div class="w-24 h-1 bg-[#c5a059] mb-10"></div>
                 <p class="text-gray-700 leading-loose text-lg mb-8">
                     مشروع <strong>"هي الشام"</strong> ليس مجرد سردٍ تاريخي، بل هو محاولة لإعادة بناء العلاقة بين المسلم
-                    وتاريخه.
-                    نقرأ الأحداث لا لنستحضر الألم، بل لنفهم سنن النهوض، ونستعيد القدرة على التفكير الاستراتيجي وصناعة
-                    القرار.
+                    وتاريخه. نقرأ الأحداث لا لنستحضر الألم، بل لنفهم سنن النهوض، ونستعيد القدرة على التفكير الاستراتيجي
+                    وصناعة القرار.
                 </p>
                 <p class="text-gray-600 leading-loose mb-8">
-                    تنتقل السلسلة بالمشاهد من <span class="text-[#2d4a3e] font-semibold">عقلية الفرد المنعزل</span>
-                    إلى <span class="text-[#2d4a3e] font-semibold">عقلية الدولة والبناء المؤسسي</span>، ومن العاطفة
-                    اللحظية إلى الفهم العميق لمسارات التغيير، عبر ١٢ محطة تاريخية وتربوية مترابطة.
+                    تنتقل السلسلة بالمشاهد من <span class="text-[#2d4a3e] font-semibold">عقلية الفرد المنعزل</span> إلى
+                    <span class="text-[#2d4a3e] font-semibold">عقلية الدولة والبناء المؤسسي</span>، ومن العاطفة اللحظية
+                    إلى الفهم العميق لمسارات التغيير، عبر ١٢ محطة تاريخية وتربوية مترابطة.
                 </p>
                 <div class="mb-10">
                     <h3 class="text-xl font-bold text-[#2d4a3e] mb-4">أهداف السلسلة:</h3>
@@ -553,7 +203,6 @@
         </div>
     </section>
 
-    <!-- Promo Teaser Section -->
     <section class="py-24 overflow-hidden">
         <div class="text-center mb-16 scroll-reveal">
             <span class="text-[#c5a059] font-bold text-sm tracking-[0.3em] block mb-3">اللمحات الأولى</span>
@@ -565,21 +214,6 @@
                 <source id="teaserVideoSource" src="video-m.mp4" type="video/mp4">
                 متصفحك لا يدعم تشغيل الفيديو.
             </video>
-
-            <!-- Play button
-                <div class="absolute inset-0 bg-gradient-to-b from-[#2d4a3e]/40 via-transparent to-[#2d4a3e]/60 flex items-center justify-center">
-                <div class="text-center">
-                    <button onclick="openVideo('video.mp4', true)" class="group relative inline-flex items-center justify-center">
-                        <div class="absolute inset-0 rounded-full bg-white/20 animate-ping opacity-75"></div>
-                        <div class="relative w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center text-[#2d4a3e] shadow-2xl transition-transform group-hover:scale-110">
-                            <i data-lucide="play" size="48" fill="currentColor"></i>
-                        </div>
-                    </button>
-                </div>
-            </div>
-        -->
-
-            <!-- Unmute / Mute Toggle Button -->
             <button id="muteToggle" onclick="toggleTeaserMute()"
                 class="absolute bottom-10 left-8 z-10 flex items-center gap-2 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 text-white text-sm font-bold px-4 py-2 rounded-full transition-all duration-300 hover:scale-105 hover:border-[#c5a059]/60"
                 aria-label="تشغيل الصوت">
@@ -590,7 +224,6 @@
         </div>
     </section>
 
-    <!-- Episodes Grid -->
     <section id="episodes" class="py-24 bg-white/40">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20 scroll-reveal">
@@ -603,7 +236,6 @@
         </div>
     </section>
 
-    <!-- Quotes Section -->
     <section id="quotes" class="py-24 bg-[#2d4a3e] text-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
             <div class="w-full md:w-1/2 scroll-reveal text-center md:text-right">
@@ -639,7 +271,6 @@
         </div>
     </section>
 
-    <!-- Gains Section -->
     <section id="gains" class="py-32 px-6 bg-[#f8f5ee] relative">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-20 scroll-reveal">
@@ -697,7 +328,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-[#14211b] text-white pt-20 pb-10 px-6">
         <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-16 mb-20">
             <div class="col-span-1 text-right">
@@ -737,7 +367,6 @@
         </div>
     </footer>
 
-    <!-- Video Modal -->
     <div id="videoModal" class="flex items-center justify-center">
         <div class="modal-content w-full max-w-4xl relative" onclick="event.stopPropagation()">
             <div class="aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl relative">
@@ -754,244 +383,7 @@
         <div class="absolute inset-0 -z-10" onclick="closeVideo()"></div>
     </div>
 
-    <script>
-        lucide.createIcons();
-
-        // ── Mobile Menu ──────────────────────────────────────────
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const toggle = document.getElementById('menuToggle');
-            const isOpen = menu.classList.contains('open');
-            if (isOpen) {
-                menu.classList.remove('open');
-                toggle.classList.remove('open');
-                toggle.setAttribute('aria-label', 'فتح القائمة');
-            } else {
-                menu.classList.add('open');
-                toggle.classList.add('open');
-                toggle.setAttribute('aria-label', 'إغلاق القائمة');
-            }
-        }
-
-        function closeMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const toggle = document.getElementById('menuToggle');
-            menu.classList.remove('open');
-            toggle.classList.remove('open');
-            toggle.setAttribute('aria-label', 'فتح القائمة');
-        }
-
-        // Close menu on outside click
-        document.addEventListener('click', (e) => {
-            const nav = document.querySelector('nav');
-            if (!nav.contains(e.target)) closeMenu();
-        });
-
-        // ── Episode Data ─────────────────────────────────────────
-        const episodes = [
-            { id: 1, title: "معاوية بن أبي سفيان", desc: "كيف بُنيت القوة البحرية في التاريخ الإسلامي؟ قراءة في التخطيط والقيادة.", videoFile: "/Graphic/ep1.mp4", cover: "images/1.jpg" },
-            { id: 2, title: "عيسى عليه السلام", desc: "رمزية المنارة البيضاء في الشام ودلالاتها الروحية والتاريخية.", videoFile: "/Graphic/ep2.mp4", cover: "images/2.jpg" },
-            { id: 3, title: "بلال بن رباح", desc: "قصة الأذان الأول وبداية الإعلان العلني للإسلام.", videoFile: "/Graphic/ep3.mp4", cover: "images/3.jpg" },
-            { id: 4, title: "الجامع الأموي", desc: "كيف تشكّلت المذاهب الفقهية الأربعة؟ ولماذا كان اختلافها رحمة.", videoFile: "/Graphic/ep4.mp4", cover: "images/4.jpg" },
-            { id: 5, title: "صلاح الدين الأيوبي", desc: "سيرة القائد الذي أعاد القدس ووحّد الصفوف، دروس في القيادة.", videoFile: "/Graphic/ep5.mp4", cover: "images/5.jpg" },
-            { id: 6, title: "ابن تيمية", desc: "حياة وفكر شيخ الإسلام، ومواقفه في الإصلاح العقدي والفكري.", videoFile: "/Graphic/ep6.mp4", cover: "images/6.jpg" }
-        ];
-
-        // ── Quotes Data ──────────────────────────────────────────
-        const quotes = [
-            { label: "مقتبس الحلقة الأولى", title: "التخطيط قبل <br> الإبحار", desc: "إن بناء السفن لا يبدأ في ورش النجارة، بل يبدأ في عقول القادة الذين يدركون أن البحر هو الميدان القادم.", img: "images/q1.webp" },
-            { label: "مقتبس الحلقة الثانية", title: "منارة <br> التغيير", desc: "لم تكن المنارة يوماً مجرد حجرٍ يعلوه الضياء، بل كانت دائماً رمزاً لبصيرة الأمم التي لا تضل الطريق.", img: "images/q2.webp" },
-            { label: "مقتبس الحلقة الثالثة", title: "صوت <br> الحق الأول", desc: "الأذان ليس مجرد نداء للصلاة، بل هو إعلان عن سيادة القيم السماوية فوق كل الضجيج الأرضي.", img: "images/q3.webp" },
-            { label: "مقتبس الحلقة الرابعة", title: "اتفاق في <br> أصول الفهم", desc: "سعة الفقه هي سعة الأمة، واختلاف الأئمة كان تنوعاً في طرق الوصول، لا تنازعاً في وجهات النظر.", img: "images/q4.webp" },
-            { label: "مقتبس الحلقة الخامسة", title: "وحدة <br> المصير", desc: "استعادة القدس لم تكن معجزة عسكرية، بل كانت ثمرة طبيعية لوحدة القلوب التي سبقت وحدة الصفوف.", img: "images/q5.webp" },
-            { label: "مقتبس الحلقة السادسة", title: "الإصلاح <br> يبدأ بالوعي", desc: "لا يمكن للأمم أن تنهض وهي تحمل أفكاراً مشوهة عن ذاتها، الإصلاح الحقيقي يبدأ من تنقية التصورات.", img: "images/q6.webp" },
-        ];
-
-        let currentQuoteIndex = 0;
-        let isTransitioning = false;
-
-        // ── Render Episodes ───────────────────────────────────────
-        const grid = document.getElementById('episodesGrid');
-        episodes.forEach(ep => {
-            const card = document.createElement('div');
-            card.className = 'episode-card scroll-reveal';
-            card.innerHTML = `
-                <div class="relative overflow-hidden aspect-video group">
-                    <img src="${ep.cover}" class="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="${ep.title}">
-                    <div class="video-overlay cursor-pointer">
-                        <div class="text-center">
-                            <div class="text-white text-2xl font-bold amiri">قريباً</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
-                    <div>
-                        <div class="flex justify-between items-start mb-3">
-                            <span class="text-[#c5a059] font-bold text-xs tracking-widest">الحلقة ${ep.id}</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-[#2d4a3e] amiri mb-3">${ep.title}</h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-4">${ep.desc}</p>
-                    </div>
-                    <button class="text-sm font-bold text-[#c5a059] flex items-center gap-2 hover:gap-3 transition-all opacity-60 cursor-not-allowed">
-                        قريباً <i data-lucide="chevron-left" size="14"></i>
-                    </button>
-                </div>
-            `;
-            grid.appendChild(card);
-        });
-
-        // ── Slider Logic ──────────────────────────────────────────
-        function initSlider() {
-            const dotsContainer = document.getElementById('quoteDots');
-            quotes.forEach((_, idx) => {
-                const dot = document.createElement('div');
-                dot.className = `w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${idx === 0 ? 'bg-[#c5a059] w-6' : 'bg-white/30'}`;
-                dot.id = `dot-${idx}`;
-                dot.onclick = () => { if (!isTransitioning) { isTransitioning = true; currentQuoteIndex = idx; updateQuote(idx); } };
-                dotsContainer.appendChild(dot);
-            });
-            updateQuote(0);
-        }
-
-        function updateQuote(index) {
-            const img = document.getElementById('quoteImg');
-            const textContainer = document.getElementById('quoteTextContainer');
-            img.style.opacity = '0';
-            img.style.transform = 'scale(1.05)';
-            textContainer.style.opacity = '0';
-            textContainer.style.transform = 'translateY(15px)';
-
-            setTimeout(() => {
-                img.src = quotes[index].img;
-                document.getElementById('quoteLabel').innerText = quotes[index].label;
-                document.getElementById('quoteTitle').innerHTML = quotes[index].title;
-                document.getElementById('quoteDesc').innerText = quotes[index].desc;
-                quotes.forEach((_, idx) => {
-                    const dot = document.getElementById(`dot-${idx}`);
-                    if (idx === index) { dot.classList.add('bg-[#c5a059]', 'w-6'); dot.classList.remove('bg-white/30'); }
-                    else { dot.classList.remove('bg-[#c5a059]', 'w-6'); dot.classList.add('bg-white/30'); }
-                });
-                img.style.opacity = '1';
-                img.style.transform = 'scale(1)';
-                textContainer.style.opacity = '1';
-                textContainer.style.transform = 'translateY(0)';
-                isTransitioning = false;
-            }, 500);
-        }
-
-        function changeQuote(dir) {
-            if (isTransitioning) return;
-            isTransitioning = true;
-            currentQuoteIndex = (currentQuoteIndex + dir + quotes.length) % quotes.length;
-            updateQuote(currentQuoteIndex);
-        }
-
-        setInterval(() => { if (!isTransitioning) changeQuote(1); }, 7000);
-
-        // ── Counters ──────────────────────────────────────────────
-        function initCounters() {
-            const counters = document.querySelectorAll('.stat-counter');
-            const animateCounter = (counter) => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const increment = target / 500;
-                if (count < target) { counter.innerText = Math.ceil(count + increment); setTimeout(() => animateCounter(counter), 50); }
-                else { counter.innerText = target; }
-            };
-            const counterObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) { animateCounter(entry.target); counterObserver.unobserve(entry.target); } });
-            }, { threshold: 0.9 });
-            counters.forEach(counter => counterObserver.observe(counter));
-        }
-
-        // ── Video Modal ───────────────────────────────────────────
-        function openVideo(filePath, autoPlay = true) {
-            const modal = document.getElementById('videoModal');
-            const player = document.getElementById('modalVideoPlayer');
-            document.getElementById('modalVideoSrc').src = filePath;
-            player.load();
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            if (autoPlay) player.play().catch(e => console.log("Auto-play prevented"));
-        }
-
-        function closeVideo() {
-            const modal = document.getElementById('videoModal');
-            const player = document.getElementById('modalVideoPlayer');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-            try { player.pause(); player.currentTime = 0; player.src = ""; player.load(); } catch (e) { }
-        }
-
-        // ── Init ──────────────────────────────────────────────────
-        window.onload = () => {
-            initSlider();
-            initCounters();
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
-            lucide.createIcons();
-        };
-
-        window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeVideo(); });
-
-        // ── Teaser Mute Toggle ────────────────────────────────────
-        function toggleTeaserMute() {
-            const video = document.getElementById('teaserVideo');
-            const icon = document.getElementById('muteIcon');
-            const label = document.getElementById('muteLabel');
-            const btn = document.getElementById('muteToggle');
-
-            video.muted = !video.muted;
-
-            if (video.muted) {
-                icon.setAttribute('data-lucide', 'volume-x');
-                label.innerText = 'تشغيل الصوت';
-                btn.classList.remove('border-[#c5a059]/60', 'bg-[#c5a059]/20');
-            } else {
-                icon.setAttribute('data-lucide', 'volume-2');
-                label.innerText = 'كتم الصوت';
-                btn.classList.add('border-[#c5a059]/60', 'bg-[#c5a059]/20');
-            }
-            lucide.createIcons();
-        }
-
-        // ── Teaser Video Autoplay on Scroll ───────────────────────
-        const teaserVideo = document.getElementById('teaserVideo');
-        if (teaserVideo) {
-            const teaserObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        teaserVideo.play().catch(() => { });
-                    } else {
-                        teaserVideo.pause();
-                    }
-                });
-            }, { threshold: 0.3 });
-            teaserObserver.observe(teaserVideo);
-            // ── Responsive Video Loading ──────────────────────────────
-            function loadResponsiveVideo() {
-                const videoSource = document.getElementById('teaserVideoSource');
-                const teaserVideo = document.getElementById('teaserVideo');
-                const isDesktop = window.innerWidth >= 768;
-                const desktopSrc = 'video.mp4';
-                const mobileSrc = 'video.mp4';
-                const newSrc = isDesktop ? desktopSrc : mobileSrc;
-
-                if (videoSource.src !== newSrc) {
-                    videoSource.src = newSrc;
-                    teaserVideo.load();
-                }
-            }
-
-            // Load correct video on page load
-            loadResponsiveVideo();
-
-            // Reload video on window resize
-            window.addEventListener('resize', loadResponsiveVideo);
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
