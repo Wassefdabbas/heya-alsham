@@ -9,7 +9,7 @@ const siteData = {
             "desc": "كيف بُنيت القوة البحرية في التاريخ الإسلامي؟ قراءة في التخطيط والقيادة.",
             "videoFile": "/Graphic/ep1.mp4",
             "cover": "images/1.jpg",
-            "youtubeLink": ""
+            "youtubeLink": "https://www.youtube.com/watch?v=oqbNNr1GMFg"
         },
         {
             "id": 2,
@@ -369,3 +369,4 @@ if (teaserVideo) {
     loadResponsiveVideo();
     window.addEventListener('resize', loadResponsiveVideo);
 }
+
