@@ -17,7 +17,7 @@ const siteData = {
             "desc": "رمزية المنارة البيضاء في الشام ودلالاتها الروحية والتاريخية.",
             "videoFile": "/Graphic/ep2.mp4",
             "cover": "images/2.jpg",
-            "youtubeLink": ""
+            "youtubeLink": "https://www.youtube.com/watch?v=YskAyOnHeus"
         },
         {
             "id": 3,
@@ -369,4 +369,5 @@ if (teaserVideo) {
     loadResponsiveVideo();
     window.addEventListener('resize', loadResponsiveVideo);
 }
+
 
