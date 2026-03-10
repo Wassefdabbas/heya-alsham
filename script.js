@@ -13,7 +13,7 @@ const siteData = {
         },
         {
             "id": 2,
-            "title": "عيسى عليه السلام",
+            "title": "المنارة البيضاء",
             "desc": "رمزية المنارة البيضاء في الشام ودلالاتها الروحية والتاريخية.",
             "videoFile": "/Graphic/ep2.mp4",
             "cover": "images/2.jpg",
