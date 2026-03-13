@@ -25,7 +25,7 @@ const siteData = {
             "desc": "قصة الأذان الأول وبداية الإعلان العلني للإسلام.",
             "videoFile": "/Graphic/ep3.mp4",
             "cover": "images/3.jpg",
-            "youtubeLink": ""
+            "youtubeLink": "https://youtu.be/hJby-WY_XRU?si=QE0g2VOjsjDHTFQf"
         },
         {
             "id": 4,
@@ -369,5 +369,6 @@ if (teaserVideo) {
     loadResponsiveVideo();
     window.addEventListener('resize', loadResponsiveVideo);
 }
+
 
 
